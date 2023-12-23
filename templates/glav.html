@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+
+{% block main %}
+    <div>
+        <div style="color: blue; font-size: x-large; font-weight: bold; width: 150px; height: 50px;">Услуги</div>
+
+        <div style="color: blue; font-size: large; width: 300; height: 50px; margin-top: -50px; margin-left: 300px">
+        <a href="/RGZ/edit_profile">Редактирование анкеты</a>
+        <a href="/RGZ/search_profiles">Поиск анкет</a>
+        <a href="/RGZ/delete_account">Удаление аккаунта</a>
+        <a href="/RGZ/admin">Панель адимистатора</a>
+        </div>
+        
+        <div>
+            <form action="/RGZ/login">
+                <button type="submit">Авторизация</button>
+            </form>
+            <form action="/RGZ/register">
+                <button type="submit">Регистрация</button>
+            </form>
+        </div>
+
+        {% if current_user.username%}
+            <div style="font-weight: bold;margin-top: 10px; color: blue;">{{ current_user.username }}</div>
+        {% else %}
+            <div style="font-weight: bold;">Anon</div>
+        {% endif %}
+        
+        <div>
+            <form action="/RGZ/logout">
+                <button type="submit">Выйти</button>
+            </form>
+        </div>
+
+
+        {% for user, user_profile in all_profiles %}
+            <h2>Профиль пользователя {{ user.username }}</h2>
+            {% if user_profile %}
+                <p>Имя: {{ user_profile.username }}</p>
+                <p>Тип услуги: {{ user_profile.service_type }}</p>
+                <p>Опыт: {{ user_profile.experience }}</p>
+                <p>Почасовая ставка: {{ user_profile.hourly_rate }}</p>
+            {% else %}
+                <p>Пользователь еще не заполнил профиль</p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    
+    </div>
+{% endblock %}

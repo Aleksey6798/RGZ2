@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block main %}        
+    <h2>Удаление аккаунта</h2>
+    
+    <p>Вы уверены, что хотите удалить свой аккаунт?</p>
+
+    <form method="post" action="{{ url_for('RGZ.delete_account') }}">
+        <label for="confirm_delete">Подтвердите удаление:</label>
+        <input type="checkbox" name="confirm_delete" id="confirm_delete" required>
+        
+        <br>
+        
+        <input type="submit" value="Удалить аккаунт">
+    </form>
+    
+    <br>
+    <a href="{{ url_for('RGZ.RGZ_glav') }}">Отмена</a>
+    
+{% endblock %}

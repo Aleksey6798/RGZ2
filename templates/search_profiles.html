@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Поиск профиля</h1>
+
+    <form method="post" action="{{ url_for('RGZ.search_profiles') }}">
+        <label for="username">Имя:</label>
+        <input type="text" name="username">
+
+        <label for="service_type">Тип услуги:</label>
+        <input type="text" name="service_type">
+
+        <label for="experience_min">Стаж (min):</label>
+        <input type="text" name="experience_min">
+
+        <label for="experience_max">Стаж (max):</label>
+        <input type="text" name="experience_max">
+
+        <label for="hourly_rate_min">Часовая ставка (min):</label>
+        <input type="text" name="hourly_rate_min">
+
+        <label for="hourly_rate_max">Часовая ставка (max):</label>
+        <input type="text" name="hourly_rate_max">
+
+        <button type="submit">Поиск</button>
+    </form>
+{% endblock %}

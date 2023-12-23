@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+main {
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+header{
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: lightslategray;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.errors {
+    color: green;
+    
+}
+
+.errors1 {
+    color: lightblue;
+    
+}
+
+.discont {
+    color: blueviolet;
+}

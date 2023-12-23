@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block lab %} Заполнение анкеты {% endblock %}
+
+{% block main %}
+    <h1>Добавьте свой профиль</h1>
+    
+    <form method="POST" action="/RGZ/fill_profile">
+        <label for="username">Имя</label>
+        <input type="text" name="username" id="username" required><br>
+
+        <label for="service_type">Тип услуги:</label>
+        <input type="text" name="service_type" id="service_type" required><br>
+
+        <label for="experience">Стаж (лет):</label>
+        <input type="number" name="experience" id="experience" required><br>
+
+        <label for="hourly_rate">Часовая ставка:</label>
+        <input type="number" name="hourly_rate" id="hourly_rate" step="0.01" required><br>
+
+        <label for="is_visible">Видимость:</label>
+        <input type="checkbox" name="is_visible" value="True">
+
+        <button type="submit">Сохранить профиль</button>
+    </form>
+{% endblock %}

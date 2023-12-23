@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 5 {% endblock %}
+
+{% block main %}
+
+    {% if current_user.username %}
+        <div class="username">
+            {{ current_user.username }}
+        </div>
+    {% else %}
+        <div class="username">Anon</div>
+    {% endif %}
+
+    <h1>Новая заметка</h1>
+
+    <form method="post" style="display: block;">
+        <div>
+            <input type="text" class="input-field" name="article_title" placeholder="Название статьи">
+        </div> 
+        <div>
+            <textarea name="article_text" class="textstate" placeholder="Текст статьи" rows="20" style="width: 300px;
+            margin-top: 15px;
+            margin-bottom: 20px;"></textarea>
+        </div>
+            <input type="submit" value="Apply"/>
+        </div>
+    </form>
+
+{% endblock %}

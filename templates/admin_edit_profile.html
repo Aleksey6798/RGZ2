@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %} 
+    <h1>Редактирование профиля пользователя: {{ user.username }}</h1>
+
+    <form method="post" action="{{ url_for('RGZ.admin_edit_profile', user_id=user.id) }}">
+        <label for="username">Имя:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}" required>
+        
+        <label for="service_type">Тип услуги:</label>
+        <input type="text" id="service_type" name="service_type" value="{{ user.articles.service_type if user.articles else '' }}" required>
+
+        <label for="experience">Опыт:</label>
+        <input type="number" name="experience" value="{{ user.articles.experience if user.articles else '' }}" required>
+        <br>
+
+        <label for="hourly_rate">Часовая ставка:</label>
+        <input type="number" name="hourly_rate" value="{{ user.articles.hourly_rate if user.articles else '' }}" required>
+        <br>
+
+        <label for="is_visible">Спрятать профиль:</label>
+        <input type="checkbox" name="is_visible" {% if user.articles and not user.articles.is_visible %}checked{% endif %}>
+        <br>
+
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{{ url_for('RGZ.RGZ_glav') }}">На главную</a>
+{% endblock %}

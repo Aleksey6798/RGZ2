@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Поиск результатов</h1>
+
+    {% if search_results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Тип услуги</th>
+                    <th>Опыт</th>
+                    <th>Часовая ставка</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for result in search_results %}
+            <tr>
+                <td>{{ result.username }}</td>
+                <td>{{ result.service_type }}</td>
+                <td>{{ result.experience }}</td>
+                <td>{{ result.hourly_rate }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+
+        {% if has_next %}
+            <a href="{{ url_for('RGZ.search_profiles', page=page + 1) }}">Дальше</a>
+        {% endif %}
+
+        {% if has_prev %}
+            <a href="{{ url_for('RGZ.search_profiles', page=page - 1) }}">Предыдущие</a>
+        {% endif %}
+
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('RGZ.search_profiles') }}">Обратно</a>
+{% endblock %}
